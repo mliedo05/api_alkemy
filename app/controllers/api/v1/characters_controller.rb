@@ -1,8 +1,8 @@
 module Api
   module V1
     class CharactersController < V1Controller
-      def index
-      end
+      before_action :set_character, only: %i[update destroy show]
+      
 
       def show
         render :json => @character.to_json(:include => :films)
@@ -32,12 +32,12 @@ module Api
 
       private
 
-      def find_character
+      def set_character
         @character = Character.find(params[:id])
       end
 
       def character_params
-        params.require(:character).permit(:image, :name, :age, :weight, :history, {movie_ids:[]})        
+        params.require(:character).permit(:image, :name, :age, :weight, :history, {film_ids:[]})        
       end
 
     end
