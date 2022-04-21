@@ -21,7 +21,6 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
-.env
 
 # Ignore uploaded files in development.
 /storage/*
@@ -35,3 +34,6 @@
 
 # Ignore application configuration
 /config/application.yml
+sendgrid.env
+sendgrid.env
+sendgrid.env

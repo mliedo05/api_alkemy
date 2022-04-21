@@ -12,6 +12,8 @@ gem "puma", "~> 5.0"
 gem 'bcrypt'
 gem 'jwt'
 
+gem 'sendgrid-ruby'
+gem "net-http"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
