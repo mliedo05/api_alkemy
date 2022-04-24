@@ -5,7 +5,7 @@ module Api
       
 
       def show
-        render :json => @character.to_json(:include => :films)
+        render :json => @character.to_json(:only => [:id, :name, :image])
       end
 
       def create
