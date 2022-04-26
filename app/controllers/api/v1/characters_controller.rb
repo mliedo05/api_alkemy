@@ -4,8 +4,21 @@ module Api
       before_action :set_character, only: %i[update destroy show]
       
 
-      def show
-        render :json => @character.to_json(:only => [:id, :name, :image])
+      def characters_list
+        @characters = Character.all
+        render :json => @characters.to_json(:only => [:id, :name, :image])
+      end
+
+      def character_detail
+        @character = Character.find(params[:id])
+        render :json => @character.to_json(:include => :films)
+      end
+
+      def character_find_by
+        @character = Character.all
+        
+        @character = @character.where('name ILIKE ?', "%#{params[:name]}%") if params[:name] 
+        render json: @character
       end
 
       def create

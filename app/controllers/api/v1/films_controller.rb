@@ -3,10 +3,15 @@ module Api
     class FilmsController < V1Controller
       before_action :set_film, only: %i[update destroy show]
 
-      def show
-        render :json => @film.to_json(:include => :characters)
+      def movies
+        @films = Film.all
+        render :json => @films.to_json(:only => [:id, :title, :image, :premiere])
       end
 
+      def movie_details
+        @film = Film.find(params[:id])
+        render :json => @film.to_json(:include => :characters)
+      end
 
       def create
         @film = Film.new(film_params)
