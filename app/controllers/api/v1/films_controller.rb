@@ -34,7 +34,20 @@ module Api
         @film.destroy
         render json: "film was successfully destroyed."
       end
-
+      def movie_find_by
+        @film = Film.all
+        if params[:name].present?
+          @film = @film.film_by_title(params[:name]) 
+        elsif params[:gender].present?
+          @film = Gender.film_genders(params[:gender])
+        end
+        
+        if @film.exists?
+          render json: @film.to_json(:include => [:characters, :genders])
+        else 
+          render json: "No value to search"
+        end
+      end
       private
       def set_film
         @film = Film.find(params[:id])

@@ -7,8 +7,9 @@ Rails.application.routes.draw do
       get 'characters_list', to: "characters#characters_list"
       get 'character_detail/:id', to: "characters#character_detail"
       get 'characters', to: "characters#character_find_by"
-      get 'movies', to: "films#movies"
+      get 'movies_list', to: "films#movies"
       get 'movie_details/:id', to: "films#movie_details"
+      get 'movies', to: "films#movie_find_by"
       resources :characters, only: %i[create update destroy]
       resources :films, only: %i[show create update destroy]
     end

@@ -16,9 +16,21 @@ module Api
 
       def character_find_by
         @character = Character.all
+        if params[:name].present?
+          @character = @character.character_by_name(params[:name]) 
+        elsif params[:age].present?
+          @character = @character.character_by_age(params[:age])
+        elsif params[:weight].present?
+          @character = @character.character_by_weight(params[:weight])
+        elsif params[:movies].present?
+          @character = Film.character_by_movie(params[:movies])
+        end
         
-        @character = @character.where('name ILIKE ?', "%#{params[:name]}%") if params[:name] 
-        render json: @character
+        if @character.exists? || @character != nil
+          render json: @character.to_json(:include => :films)
+        else 
+          render json: "No value to search"
+        end
       end
 
       def create
