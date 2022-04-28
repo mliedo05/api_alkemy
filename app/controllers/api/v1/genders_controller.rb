@@ -1,6 +1,7 @@
 module Api
   module V1
-    class GendresController < V1Controller
+    class GendersController < V1Controller
+      before_action :set_gender, only: %i[update destroy show]
 
 
       def create
@@ -32,8 +33,9 @@ module Api
       end
 
       def gender_params
-        params.require(:gender).permit(:image, :name {film_ids: []})
+        params.require(:gender).permit(:image, :name)
       end
+
     end
   end
 end

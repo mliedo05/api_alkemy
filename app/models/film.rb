@@ -4,6 +4,8 @@ class Film < ApplicationRecord
     has_many :film_characters
     has_many :characters, through: :film_characters
 
+    validates :title, presence: true, uniqueness: true
+
     def self.film_by_title(name)
         Film.where('title ILIKE ?', "%#{name}%")
     end

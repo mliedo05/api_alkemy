@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'movies', to: "films#movie_find_by"
       resources :characters, only: %i[create update destroy]
       resources :films, only: %i[show create update destroy]
+      resources :genders, only: %i[create update destroy]
     end
   end
 end

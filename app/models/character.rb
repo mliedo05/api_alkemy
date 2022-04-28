@@ -2,6 +2,9 @@ class Character < ApplicationRecord
     has_many :film_characters
     has_many :films, through: :film_characters
 
+    validates :name, presence: true, uniqueness: true
+    validates :age, :weight, presence: true
+
     def self.character_by_name(name)
         Character.where('name ILIKE ?', "%#{name}%")
     end
