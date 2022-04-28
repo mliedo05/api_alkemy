@@ -5,4 +5,4 @@ En esta app podras hacer los CRUD de las peliculas, personajes y generos de todo
 Ruby Version 2.7.0 :desktop_computer:
 Rails Version 7.0.2 :desktop_computer:
 
-** Pasos en Postman _https://documenter.getpostman.com/view/15089225/UyrEiFXN_ **
+**Pasos en Postman _https://documenter.getpostman.com/view/15089225/UyrEiFXN_**
